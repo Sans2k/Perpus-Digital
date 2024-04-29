@@ -1,11 +1,11 @@
 <template>
   <div class="row p-3 bg-primary text-white">
-    <div>
-      <img src="~/assets/img/LOGO-SMK4.png" alt="logo SMKN 4">
+    <div class="col-lg-1">
+      <img src="@/assets/img/LOGO-SMK4.png" alt="logo SMKN 4">
     </div>
 
-    <div class="col-lg-5">
-      <h1>Perpus Digital</h1>
+    <div class="col-lg-11">
+      <h1>PERPUS DIGITAL</h1>
       <address>
         SMKN 4 Tasikmalaya
         JL.Depok, Sukamenak, Purbaratu
@@ -15,8 +15,12 @@
 </template>
 
 <style scoped>
+.bg-primary {
+  background-color: #20948B!important;
+  font-family:cursive;
+}
+
 img {
-  width: 120px;
-  margin-left: 90%;
+  width: 100px;
 }
 </style>
