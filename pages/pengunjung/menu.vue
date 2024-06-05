@@ -1,35 +1,41 @@
 <template>
-  <div class="container-fluid">
-    <div class="row my-5">
-      <div class="col-lg-6">
-        <nuxt-link to="/pengunjung/riwayat">
-          <div class="card bg-pengunjung rounded-5">
-            <div class="card-body pt-5">
-              <h2 class="mt-5">RIWAYAT KUNJUNGAN</h2>
+  <div class="content">
+    <div class="container-fluid d-flex justify-content-around">
+      <div class="row mx-1 py-5">
+        <div class="col-lg-6 col mb-3">
+          <nuxt-link to="/pengunjung/riwayat">
+            <div class="card bg-pengunjung rounded-5" style="height: 85vh; ">
+              <div class="card-body pt-5">
+                <h2 class="text-center" style="margin-top: 350px;">RIWAYAT KUNJUNGAN</h2>
+              </div>
             </div>
-          </div>
-        </nuxt-link>
-      </div>
+          </nuxt-link>
+        </div>
 
-      <div class="col-lg-6">
-        <nuxt-link to="/buku">
-          <div class="card bg-buku rounded-5">
-            <div class="card-body pt-5">
-              <h2 class="mt-5">CARI BUKU</h2>
+        <div class="col-lg-6 col">
+          <nuxt-link to="/buku">
+            <div class="card bg-buku rounded-5" style="height: 85vh; padding: 0px 80px;">
+              <div class="card-body pt-5">
+                <h2 class="text-center" style="margin-top: 350px;">CARI BUKU</h2>
+              </div>
             </div>
-          </div>
-        </nuxt-link>
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+.content{
+  background-color: #6AB187;
+  /* height: 100vh; */
+  width: 100%;
+}
 .card {
-  opacity: 80%;
+  opacity: 85%;
   color: white;
   align-items: center;
   height:250px;
-  box-shadow: 1px 1px 10px #424242;
 }
 .card.bg-pengunjung {
   background-image: url('@/assets/img/bg-home-kunjungan.jpg');

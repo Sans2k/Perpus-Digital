@@ -1,5 +1,5 @@
 <template>
-  <div class="row p-3 bg-primary text-white">
+  <div class="row p-3 bg-primary text-white m-0">
     <div class="col-lg-1">
       <img src="@/assets/img/LOGO-SMK4.png" alt="logo SMKN 4">
     </div>
@@ -18,6 +18,8 @@
 .bg-primary {
   background-color: #20948B!important;
   font-family:cursive;
+  width: 100%;
+  left: 0;
 }
 
 img {

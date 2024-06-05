@@ -1,52 +1,87 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <nuxt-link to="/pengunjung/menu">
-        <button type="button" class="btn btn-secondary mt-4">KEMBALI</button></nuxt-link>
-        <h2 class="text-center my-4">BUKU</h2>
-        <div class="my-3">
-          <input type="search" class="form-control rounded-5" placeholder="Mau baca buku apa hari ini?">
+  <div class="wrapper">
+    <div class="content"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          
+            <h2 class="text-center my-4 text-white">RAK BUKU</h2>
+            <form @submit.prevent="getBooks" class="col mb-3">
+              <div class="input-group flex-nowrap rounded">
+                <input v-model="keyword" type="search" class="form-control from-control-lg rounded-5" placeholder="Cari..." aria-label="Search" @input="getbooks" />
+              </div>
+            </form>
+            <div class="my-3 text-white">menampilkan {{ books.length }} buku dari {{ books.length }}</div>
         </div>
-        <div class="my-3 text-muted">menampilkan 3 dari 3</div>
+      </div>
         <div class="row">
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="@/assets/img/cover1.jpg" class="cover" alt="cover 1">
-              </div>
+          <div v-for="(book,i) in books" :key="i" class="col mb-3">
+            <div class="card mb-3 col-lg-2 col-2">
+              <nuxt-link :to="`/buku/${book.id}`">
+                  <div class="card-body">
+                    <img :src="book.cover" class="cover" alt="cover">
+                  </div>
+              </nuxt-link>
             </div>
           </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="@/assets/img/cover2.jpg" class="cover" alt="cover 2">
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img src="@/assets/img/cover3.jpg" class="cover" alt="cover 3">
-              </div>
-            </div>
+          <div class="row d-flex justify-content-end">
+                <nuxt-link to="/pengunjung/menu" class="col-1 btn btn-dark btn-lg rounded-5 px-5">menu</nuxt-link>        
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div>        
 </template>
+<script setup>
+const supabase= useSupabaseClient()
 
+const keyword = ref('')
+const books = ref([])
+
+const getbooks = async () => {
+  const { data ,error } = await supabase
+  .from('buku')
+  .select(`*, kategori(*)`)
+  .ilike("judul", `%${keyword.value}%`)
+  .order('id')
+  if(data) books.value = data
+}
+
+onMounted(() =>{
+  getbooks()
+})
+</script>
 <style scoped>
-.card-body {
-  width: 100%;
-  height: 20em;
+.content{
+  background-image: url('@/assets/img/bg-home-cari-buku.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* font-family: "Jockey One"; */
+  position: fixed;
+  top: 0;
+  background-position: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  
+}
+.card {
+  width: 260px;
+  height: 100%;
   padding: 0;
 }
 .cover {
-  width: 100%;
+  width: 220px;
   height: 100%;
   object-fit: cover;
   object-position: 0 30;
 }
+.btn{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 150px;
+  height: 50px;
+}
+
 </style>

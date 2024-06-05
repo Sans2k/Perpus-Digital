@@ -2,38 +2,68 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <nuxt-link to="/pengunjung/menu">
-        <button type="button" class="btn btn-secondary mt-4">KEMBALI</button></nuxt-link>
         <h2 class="text-center my-4">RIWAYAT KUNJUNGAN</h2>
-        <div class="my-3">
-          <input type="search" class="form-control form-control-lg rounded-5" placeholder="Filter...">
-        </div>
-        <div class="my-3 text-muted">menampilkan 1 dari 1</div>
-        <table class="table table-bordered">
+        <div class="my-3">menampilkan 1 dari 1</div>
+        <table class="table table-bordered border-white text-white">
           <thead>
             <tr>
               <td>#</td>
-              <td>NAMA</td>
-              <td>KEANGGOTAAN</td>
-              <td>KELAS</td>
-              <td>KEPERLUAN</td>
-              <td>TANGGAL</td>
-              <td>JAM</td>
+              <td>Tanggal</td>
+              <td>Waktu</td>
+              <td>Nama</td>
+              <td>Keanggotaan</td>
+              <td>Kelas</td>
+              <td>Keperluan</td>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>Sansan</td>
-              <td>Siswa</td>
-              <td>XI PPLG 3</td>
-              <td>Baca</td>
-              <td>22 Februari 2024</td>
-              <td>10.20.00</td>
+            <tr v-for="(visitor, i) in visitors" :key="i">
+              <td>{{ i+1 }}.</td>
+              <td>{{ visitor.tanggal }}</td>
+              <td>{{ visitor.waktu }}</td>
+              <td>{{ visitor.nama }}</td>
+              <td>{{ visitor.keanggotaan.nama }}</td>
+              <td>{{ visitor.tingkat}}-{{ visitor.jurusan }}{{ visitor.kelas }}</td>
+              <td>{{ visitor.keperluan.nama }}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="row float-end">
+        <nuxt-link to="/pengunjung/menu" class="btn btn-dark btn-lg rounded-5 px-5">menu</nuxt-link>
+    </div>
   </div>
 </template>
+<script setup>
+const supabase = useSupabaseClient()
+
+const visitors = ref([])
+const getPengunjung = async () => {
+  const { data, error } = await supabase.from('pengunjung').select(`*, keanggotaan(*), keperluan(*)`)
+  if(data) visitors.value = data 
+}
+onMounted(() => {
+  getPengunjung()
+})
+</script>
+
+<style scoped>
+.container-fluid {
+  background-image: url('@/assets/img/bg-home-kunjungan.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color:rgb(255, 255, 255);
+  color: white;
+  opacity: 70%;
+}
+.btn{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 150px;
+  height: 50px;
+}
+</style>
