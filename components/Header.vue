@@ -6,8 +6,8 @@
 
     <div class="col-lg-11">
       <h1>PERPUS DIGITAL</h1>
+      <div>SMKN 4 Tasikmalaya</div>
       <address>
-        SMKN 4 Tasikmalaya
         JL.Depok, Sukamenak, Purbaratu
       </address>
     </div>
