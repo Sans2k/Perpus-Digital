@@ -4,11 +4,11 @@
       <div class="col-lg-12">
         <h2 class="text-center my-4">RIWAYAT KUNJUNGAN</h2>
         <div class="my-3">menampilkan {{ visitors.length }} dari {{ visitors.length }}</div>
-        <div class="table table-responsive">
-          <table class="table-bordered border-white text-white">
+        <div class="table-responsive">
+          <table class="table table-bordered border-white text-white">
             <thead>
               <tr>
-                <td>#</td>
+                <td>No</td>
                 <td>Tanggal</td>
                 <td>Waktu</td>
                 <td>Nama</td>
