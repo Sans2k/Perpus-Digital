@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <h2 class="text-center my-4">RIWAYAT KUNJUNGAN</h2>
         <div class="my-3">menampilkan {{ visitors.length }} dari {{ visitors.length }}</div>
-        <div class=" table-responsive">
+        <div class="table-responsive">
           <table class="table table-bordered border-white text-white">
             <thead>
               <tr>
