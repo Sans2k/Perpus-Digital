@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid table-responsive">
     <div class="row">
       <div class="col-lg-12">
         <h2 class="text-center my-4">RIWAYAT KUNJUNGAN</h2>
         <div class="my-3">menampilkan {{ visitors.length }} dari {{ visitors.length }}</div>
-        <div class="table-responsive">
+        <div class=" table-responsive">
           <table class="table table-bordered border-white text-white">
             <thead>
               <tr>
@@ -52,14 +52,13 @@ onMounted(() => {
 
 <style scoped>
 .container-fluid {
-  background-image: url('@/assets/img/bg-home-kunjungan.jpg');
+  background-image: url('@/assets/img/home.png');
   background-size: cover;
   height: 100vh;
   width: 100%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color:rgb(255, 255, 255);
   color: white;
-  opacity: 70%;
 }
 .btn{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
