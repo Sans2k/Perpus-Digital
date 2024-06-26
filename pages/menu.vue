@@ -35,11 +35,11 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  text-decoration: none;
+  text-docoration: none;
 }
 .card.bg-buku {
   background: url("../assets/img/bg-home-cari-buku.jpg") no-repeat center center;
   background-size: cover;
-  text-decoration: none;
+  text-docoration: none;
 }
 </style>
